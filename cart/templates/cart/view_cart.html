@@ -1,0 +1,58 @@
+{% extends 'cart/base.html' %}
+
+{% block title %}Cart - Online Food Cart{% endblock %}
+
+{% block content %}
+<main class="max-w-4xl mx-auto bg-white p-8 shadow-md rounded-lg mt-10">
+    <h1 class="text-3xl font-bold text-center mb-6">Your Cart</h1>
+
+    <!-- Cart Items List -->
+    <ul class="space-y-4">
+        {% for item in cart_items %}
+            <li class="flex justify-between items-center p-4 border-b border-gray-300">
+                <div class="flex items-center">
+                    <span class="font-semibold text-lg">{{ item.quantity }} x</span>
+                    <span class="ml-2 font-semibold text-lg">{{ item.product.name }}</span>
+                </div>
+                <span class="text-lg font-semibold">${{ item.product.price }}</span>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <!-- Total Price -->
+    <div class="flex justify-between items-center mt-6">
+        <p class="text-2xl font-bold">Total:</p>
+        <p class="text-2xl font-bold">${{ total }}</p>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="mt-6 flex justify-between">
+        <a href="{% url 'cart:checkout' %}" class="bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition duration-300">Checkout</a>
+        <a href="{% url 'cart:product_list' %}" class="bg-orange-600 text-red py-2 px-4 rounded-lg hover:bg-gray-700 transition duration-300">Continue Shopping</a>
+    </div>
+</main>
+{% endblock %}
+
+<!--
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+</head>
+<body>
+    <h1> Cart </h1>
+    <ul>
+        {% for item in cart_items %}
+            <li>
+                {{ item.quantity }} x {{ item.product.name }} - ${{ item.product.price }} each
+            </li>
+        {% endfor %}
+    </ul>
+    <p>Total: ${{ total }}</p>
+    <a href="{% url 'cart:checkout' %}">Checkout</a>
+    <a href="{% url 'cart:product_list' %}">Continue Shopping</a>
+</body>
+</html>
+-->

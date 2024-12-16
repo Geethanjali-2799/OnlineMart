@@ -1,0 +1,50 @@
+{% extends 'cart/base.html' %}
+
+{% block content %}
+<main class="text-center p-10">
+    <h1 class="text-4xl font-bold mb-4">Welcome to the Online Food Cart</h1>
+    <p class="text-lg mb-6">Explore fresh and organic foods directly from farmers!</p>
+    <a href="/cart/products/" class="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700">Start Shopping</a>
+</main>
+{% endblock %}
+
+
+
+
+<!--
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Food Cart</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul style="display: flex; justify-content: space-between;">
+                <li><a href="/cart/">Home</a></li>
+                <li><a href="/cart/products/">Shop</a></li>
+                <li><a href="/cart/view_cart/">Cart</a></li>
+                {% if user.is_authenticated %}-->
+                <!-- Logout button that submits a POST request --><!--
+                    <li>
+                        <form method="post" action="{% url 'cart:logout' %}">
+                            {% csrf_token %}
+                            <button type="submit">Logout</button>
+                        </form>
+                    </li>
+                {% else %}
+                    <li><a href="/cart/login/">Login</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1>Welcome to the Online Food Cart</h1>
+        <p>Explore fresh and organic foods directly from farmers!</p>
+        <a href="/cart/products/">Start Shopping</a>
+    </main>
+</body>
+</html>
+-->

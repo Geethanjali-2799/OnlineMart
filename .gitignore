@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+.env/
+venv/
+
+# Django
+*.log
+db.sqlite3
+media/
+Images/
+node_modules/
+
+# IDEs
+.vscode/
+.idea/
+
+# Tailwind CSS build artifacts
+public/
+
+# System Files
+.DS_Store
+Thumbs.db

@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Online Mart{% endblock %}</title>
+    <link href="{% static 'css/output.css' %}" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+
+    <header class="bg-blue-600 text-white p-4">
+        <nav>
+            <ul class="flex justify-between">
+                <li><a href="/cart/" class="hover:underline">Home</a></li>
+                <li><a href="/cart/products/" class="hover:underline">Shop</a></li>
+                <li><a href="/cart/view_cart/" class="hover:underline">Cart</a></li>
+                {% if user.is_authenticated %}
+                <li>
+                    <form method="post" action="{% url 'cart:logout' %}">
+                        {% csrf_token %}
+                        <button type="submit" class="bg-red-500 hover:bg-red-700 text-white py-2 px-4 rounded">Logout</button>
+                    </form>
+                </li>
+                {% else %}
+                <li><a href="/cart/login/" class="bg-green-500 hover:bg-green-700 text-white py-2 px-4 rounded">Login</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container mx-auto p-8">
+        {% block content %}{% endblock %}
+    </main>
+
+</body>
+</html>
+
